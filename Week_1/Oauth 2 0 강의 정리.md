@@ -18,7 +18,7 @@
 
 그러면 나의 서비스가 요청하는 기능만을 허락
 
-![image.png](Oauth%202%200%20%E1%84%80%E1%85%A1%E1%86%BC%E1%84%8B%E1%85%B4%20%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%85%E1%85%B5%20f0cd36cb001c4fa7b1f74dee28c4e4a4/image.png)
+![image.png](./image/image.png)
 
 결론: **Oauth를 통해 엑세스토큰을 요청한다**
 
@@ -32,7 +32,7 @@
 
 이것들을 각각client,Resource Owner,Resource Server라 부른다.
 
-![image.png](Oauth%202%200%20%E1%84%80%E1%85%A1%E1%86%BC%E1%84%8B%E1%85%B4%20%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%85%E1%85%B5%20f0cd36cb001c4fa7b1f74dee28c4e4a4/image%201.png)
+![image.png](image/image%201.png)
 
 ---
 
@@ -40,7 +40,7 @@
 
 클라이언트가 리소스서버를 이용하려면 승인을 사전에 받아야한다. 이를 등록이라함
 
-![image.png](Oauth%202%200%20%E1%84%80%E1%85%A1%E1%86%BC%E1%84%8B%E1%85%B4%20%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%85%E1%85%B5%20f0cd36cb001c4fa7b1f74dee28c4e4a4/image%202.png)
+![image.png](./image/image%202.png)
 
 서비스 마다 다르지만 이 세가지는 공통적으로 받음. 클라이언트 시크릿은 공개되면 안됨.
 
@@ -56,13 +56,13 @@ Authorized redirect URLs 주소로 요청을 하게 된다.
 
 리소스 서버의 특정 기능만이 필요할때 모든 기능에 인증받는게 아니라 최소한의 기능만 인증받아야함.
 
-![image.png](Oauth%202%200%20%E1%84%80%E1%85%A1%E1%86%BC%E1%84%8B%E1%85%B4%20%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%85%E1%85%B5%20f0cd36cb001c4fa7b1f74dee28c4e4a4/image%203.png)
+![image.png](./image/image%203.png)
 
 리소스 오너가 기능을 쓰려 접속하려 하면 클라이언트는 위와 같은 안내창을 보여줄것이다.
 
 그럼 우리는 
 
-![image.png](Oauth%202%200%20%E1%84%80%E1%85%A1%E1%86%BC%E1%84%8B%E1%85%B4%20%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%85%E1%85%B5%20f0cd36cb001c4fa7b1f74dee28c4e4a4/image%204.png)
+![image.png](./image/image%204.png)
 
 이런 주소를 만들어 보여주면 된다.
 
@@ -72,7 +72,7 @@ Authorized redirect URLs 주소로 요청을 하게 된다.
 
 그리고 맞다면 쓰려는 기능인 scope를 사용하려는지 권한을 요청하는 창을 띄움 
 
-![image.png](Oauth%202%200%20%E1%84%80%E1%85%A1%E1%86%BC%E1%84%8B%E1%85%B4%20%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%85%E1%85%B5%20f0cd36cb001c4fa7b1f74dee28c4e4a4/image%205.png)
+![image.png](./image/image%205.png)
 
 허용을 하면 허용했다고 리소스서버에 저장을 함.
 
@@ -82,15 +82,15 @@ Authorized redirect URLs 주소로 요청을 하게 된다.
 
 바로 엑세스 토큰을 발급하지는 않고 authorization code 를 발급한다. 이것을 리소스 오너한테 응답한다.
 
-![image.png](Oauth%202%200%20%E1%84%80%E1%85%A1%E1%86%BC%E1%84%8B%E1%85%B4%20%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%85%E1%85%B5%20f0cd36cb001c4fa7b1f74dee28c4e4a4/image%206.png)
+![image.png](./image/image%206.png)
 
 그럼 리소스 오너는 그 주소로 이동하게 되고 그것을 클라이언트가 갖게됨.
 
-![image.png](Oauth%202%200%20%E1%84%80%E1%85%A1%E1%86%BC%E1%84%8B%E1%85%B4%20%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%85%E1%85%B5%20f0cd36cb001c4fa7b1f74dee28c4e4a4/image%207.png)
+![image.png](./image/image%207.png)
 
 그럼 클라이언트는 시크릿과 authorization code 정보를 가지고 리소스 서버에게 전송. 
 
-![image.png](Oauth%202%200%20%E1%84%80%E1%85%A1%E1%86%BC%E1%84%8B%E1%85%B4%20%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%85%E1%85%B5%20f0cd36cb001c4fa7b1f74dee28c4e4a4/image%208.png)
+![image.png](./image/image%208.png)
 
 리소스 서버는 클라이언트에게 전송한 이 정보들을 비교해보고 일치하면 그 다음단계인 엑세스 토큰 발급을 하게 된다.
 
@@ -102,7 +102,7 @@ Authorized redirect URLs 주소로 요청을 하게 된다.
 
 리소스 서버는 엑세스 토큰을 드디어 발급하고 클라이언트에게 전송하게 된다.
 
-![image.png](Oauth%202%200%20%E1%84%80%E1%85%A1%E1%86%BC%E1%84%8B%E1%85%B4%20%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%85%E1%85%B5%20f0cd36cb001c4fa7b1f74dee28c4e4a4/image%209.png)
+![image.png](./image/image%209.png)
 
 ---
 
@@ -122,7 +122,7 @@ API 뒤에 acess_token=(엑세스토큰) 하면 허락을 받을수 있음
 
 그래서 이를 새롭게 받게 해주는걸 Refresh token 이라 함.
 
-![image.png](Oauth%202%200%20%E1%84%80%E1%85%A1%E1%86%BC%E1%84%8B%E1%85%B4%20%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%85%E1%85%B5%20f0cd36cb001c4fa7b1f74dee28c4e4a4/image%2010.png)
+![image.png](./image/image%2010.png)
 
 원래는 리프레쉬 토큰을 엑세스 토큰을 같이 발급해서 클라이언트에게 넘긴다.
 
