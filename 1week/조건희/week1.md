@@ -30,18 +30,18 @@
     4. Resource Owner가 입력 값을 채우고 요청을 보내면 Resource Server가 들어온 요청의 client_id와 일치하는 id가 존재하는지 확인 후 존재한다면 scope에 해당하는 권한을 client에게 제공하는 것에 동의하는 창을 Resource Owner에게 보내준다.
     5. Resource Owner가 동의를 하면 Resource Server에는 user_id값과 이 id의 scope가 추가된다.
 
-    ![0.png](./week1/조건희/img/0.png)
+    ![0.png](./1week/조건희/img/0.png)
 
     # Resource Server의 승인 과정
     1. 승인을 위해 바로 Access token을 발급하는 것이 아닌 authorization code(임시 비밀번호)를 Owner에게 제공.
     2. Owner가 Client에게 authorization code를 전달.
     3. Client는 authorization code를 가지고 Resource Server에 요청을 보냄 (ex. https://resource_server/token?grant_type=authorization_code&code=3&redirect_url=https://client/callback&client_id=1&client_scret=2)
-    ![1.png](./week1/조건희/img/1.png)
+    ![1.png](./1week/조건희/img/1.png)
 
     # Access Token 발급
     1. 위에 3번과정을 통해 Resource Server가 요청을 받으면, 전달받은 값(client_id, client_secret)이 일치하는지 확인.
     2. 일치하면 Resource Server가 Access Token을 Client에 응답.
-    ![2.png](./week1/조건희/img/2.png)
+    ![2.png](./1week/조건희/img/2.png)
 
     # API 호출
     - 발급받은 Access Token을 활용하여 해당 소셜 서비스의 기능을 API호출을 통해 이용 가능.
@@ -53,7 +53,7 @@
     - 이 토큰이 만료되면 다시 발급을 해야 하는데, 이 과정마다 사용자에게 로그인을 요청하게 된다면 매우 번거로울 것.
     이를 해결하기 위해 Refresh Token을 사용히여 Access Token을 재발급 받을 수 있다.
     - 이 Refresh Token은 Access Token 발행 시 같이 넘겨준다. (아닌 경우도 있다.)
-    ![3.png](./week1/조건희/img/3.png)
+    ![3.png](./1week/조건희/img/3.png)
 
     # 정리
     OAuth는 인증 괴정에 참여하는 3자 Owner, Client, Resource Server가 한자리에 모일 수 없는 상황에서 어떻게 하면 서로를 신뢰할 수 있을지 고민하다 나온 기술이다.
