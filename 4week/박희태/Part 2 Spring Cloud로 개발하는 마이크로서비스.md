@@ -10,7 +10,7 @@
 
 이와 상반되는게 모두 분리해서 개발하는 msa 방식.
 
-![image.png](./image1.png)
+![image.png](./image/image1.png)
 
 - 하나의 시스템이 모두 패키징 되어있기때문에 일부를 수정해도 다시 빌드하고 테스트해야함.
 
@@ -24,9 +24,9 @@
 
 우리가 흔히 사용하는  프론트엔드와 백엔드를 분리하는 방식!
 
-![image.png](./image2.png)
+![image.png](./image/image2.png)
 
-![image.png](./image3.png)
+![image.png](./image/image3.png)
 
 또한 msa를 사용하면 다양한 디바이스를 고려하는것도 가능하다.
 
@@ -44,7 +44,7 @@
 8. 시각화 할수있는 관리도구를 같이 가지고 있어야함
 9. CI/CD
 
-![image.png](./image4.png)
+![image.png](./image/image4.png)
 
 # “모든것은 마이크로 서비스가 되어야한다?”
 
@@ -72,13 +72,13 @@ SOA - 재사용을 통한 비용절감
 
 MSA - 서비스간의 결합도를 낮추어 변화에 능동적으로 대응
 
-![image.png](./image5.png)
+![image.png](./image/image5.png)
 
 SOA - 공통서비스를 서비스 버스에 모아 사업 측면에서 공통 서비스형식으로 서비스 제공
 
 MSA - 각 독립된 서비스가 노출된 REST API를 사용
 
-![image.png](./image6.png)
+![image.png](./image/image6.png)
 
 ### RESTful Web Service
 
@@ -98,7 +98,7 @@ level 3
 
 level2+HATOAS / 데이터를 받고 그다음 단계에서 무엇을 할수 있는지 넘겨주는것
 
-![image.png](./image7.png)
+![image.png](./image/image7.png)
 
 SOA MSA둘의 차이는 서비스를 어디까지 공유하느냐가 있다.
 
@@ -106,7 +106,7 @@ SOA MSA둘의 차이는 서비스를 어디까지 공유하느냐가 있다.
 
 ## **Microservice Architecture Structures**
 
-![image.png](./image8.png)
+![image.png](./image/image8.png)
 
 ## **외부 인터페이스**
 
@@ -145,7 +145,7 @@ SOA MSA둘의 차이는 서비스를 어디까지 공유하느냐가 있다.
 
 - Build Automation, Image Repo, Deployment Automation, Platform Automation: 지속적 통합 및 배포를 자동화.
 
-![image.png](./image9.png)
+![image.png](./image/image9.png)
 
 이렇게 많은 기술들이 msa의 기반 기술이 될수 있다!
 
