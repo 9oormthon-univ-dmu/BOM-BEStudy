@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: EcommerceDiscoveryService
+server:
+  port: 8761
+eureka:
+  client:
+    resister-with-eureka: false
+    fetch-registry: false
