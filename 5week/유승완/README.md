@@ -35,18 +35,18 @@
     
     ```yaml
     eureka:
-    	client:
-    		register-with-eureka: true # Service Discovery에 등록하겠다
-    		fetch-registry: true # Eureka 서버로부터 등록되어 있는 인스턴스들의 정보를 주기적으로 가져올 것이다
-    		service-url: # Eureka 서버의 주소
-    			defaultZone: http://127.0.0.1:8761/eureka # 포트 번호는 설정에 따라 달라짐
-    			
+        client:
+            register-with-eureka: true # Service Discovery에 등록하겠다
+            fetch-registry: true # Eureka 서버로부터 등록되어 있는 인스턴스들의 정보를 주기적으로 가져올 것이다
+            service-url: # Eureka 서버의 주소
+                defaultZone: http://127.0.0.1:8761/eureka # 포트 번호는 설정에 따라 달라짐
+    
     # 프로젝트 설정
     server:
-    	port: 9001
+        port: 9001
     spring:
-    	application:
-    		name: user-service # 프로젝트 이름
+        application:
+            name: user-service # 프로젝트 이름
     ```
     
 - Eureka 서버를 실행 중인 상태에서 서비스를 실행시킨다. Eureka 서버의 관리 콘솔로 접근해 서비스가 등록되었는지 확인한다.
@@ -74,7 +74,7 @@
     
     ```yaml
     server:
-    	port: 0
+        port: 0
     ```
     
     - application.yml에서 서버 포트를 0으로 설정하면 매번 프로젝트가 실행될 때마다 무작위 포트가 지정된다. 그러나 이 방식을 사용하면 Eureka 서버 콘솔에서 마이크로 서비스를 구분하기 어려워진다. 여러 프로젝트를 동시 실행하더라도 모두 0번 포트로 표시된다.
@@ -85,8 +85,8 @@
         
         ```yaml
         eureka:
-        	instance: # 인스턴스 ID를 무작위 부여한다. hostname == IP, instance_id == random.value
-        		instance-id: ${spring.cloud.client.hostname}:${spring.application.instance_id:${random.value}}
+            instance: # 인스턴스 ID를 무작위 부여한다. hostname == IP, instance_id == random.value
+                instance-id: ${spring.cloud.client.hostname}:${spring.application.instance_id:${random.value}}
         ```
         
         ![6.png](./images/6.png)
