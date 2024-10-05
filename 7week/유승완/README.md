@@ -173,3 +173,107 @@ spring:
 ![4.png](./images/4.png)
 
 GlobalFilter가 모든 필터 중 가장 처음으로 시작되고 가장 마지막으로 종료되는 것을 볼 수 있다.
+
+<br/>
+
+## Logging Filter
+
+이전에 구현한 두 유형의 필터 개념을 활용해 Logging Filter를 적용해본다.
+second-service에만 Logging Filter를 적용하고, 필터의 우선 순위도 조정해본다.
+
+```yaml
+# application.yml
+....
+
+routes:
+  - id: first-service
+    uri: http://localhost:8081
+    predicates:
+      - Path=/first-service/**
+    filters:
+      - CustomFilter
+  - id: second-service
+    uri: http://localhost:8082
+    predicates:
+      - Path=/second-service/**
+    filters:
+      - name: CustomFilter
+      - name: LoggingFilter # LoggingFilter 적용
+        args:
+          baseMessage: Hi, there
+          preLogger: true
+          postLogger: true
+```
+
+```java
+// LoggingFilter.java
+@Component
+@Slf4j
+public class LoggingFilter extends AbstractGatewayFilterFactory<LoggingFilter.Config> {
+    public LoggingFilter() {
+        super(Config.class);
+    }
+
+    @Data
+    public static class Config {
+        private String baseMessage;
+        private boolean preLogger;
+        private boolean postLogger;
+    }
+
+    @Override
+    public GatewayFilter apply(Config config) {
+        return ((exchange, chain) -> {
+            ServerHttpRequest request = exchange.getRequest();
+            ServerHttpResponse response = exchange.getResponse();
+
+            log.info("Logging filter baseMessage: " + config.getBaseMessage());
+            if (config.isPreLogger()) {
+                log.info("Logging PRE filter: request uri -> {}", request.getURI());
+            }
+            return chain.filter(exchange).then(Mono.fromRunnable(() -> {
+                if (config.isPostLogger()) {
+                    log.info("Logging POST filter: response code -> {}", response.getStatusCode());
+                }
+            }));
+        });
+    }
+}
+```
+![5.png](./images/5.png)
+필터 동작 순서
+![6.png](./images/6.png)
+
+<br/>
+
+### 필터 우선순위 지정
+
+```java
+....
+
+// GatewayFilter 메소드 (+ 필터 우선순위 설정)
+@Override
+public GatewayFilter apply(Config config) {
+    GatewayFilter filter = new OrderedGatewayFilter((exchange, chain) -> {
+        ServerHttpRequest request = exchange.getRequest();
+        ServerHttpResponse response = exchange.getResponse();
+
+        log.info("Logging filter baseMessage: {}", config.getBaseMessage());
+        if (config.isPreLogger()) {
+            log.info("Logging PRE filter: request uri -> {}", request.getURI());
+        }
+        return chain.filter(exchange).then(Mono.fromRunnable(() -> {
+            if (config.isPostLogger()) {
+                log.info("Logging POST filter: response code -> {}", response.getStatusCode());
+            }
+        }));
+    }, OrderedGatewayFilter.HIGHEST_PRECEDENCE); // 필터의 우선순위를 최상으로 설정한다
+
+    return filter;
+}
+```
+
+![7.png](./images/7.png)
+필터 동작 순서
+![8.png](./images/8.png)
+LoggingFilter의 우선순위를 최상으로 설정함에 따라 필터 동작 순서가 달라졌음을 알 수 있다.
