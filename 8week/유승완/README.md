@@ -1,5 +1,3 @@
-# week8
-
 # 8주차 : Spring Cloud MSA #4
 
 ### 섹션3 : API Gateway Service
@@ -61,7 +59,7 @@ server:
   
 eureka:
   instance:
-	  instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
 ```
 
 로드밸런서로 요청이 분산될 때 어떤 first-service 인스턴스로 포워딩 되었는지 확인하기 위해 컨트롤러 메소드가 서버 port를 리턴하도록 수정한다.
@@ -89,6 +87,8 @@ public class FirstServiceController {
 ```
 
 `localhost:8080/first-service/check` 로 접속해서 새로고침을 해보면 두 개의 포트가 번갈아 출력되는데, 이를 통해 라운드-로빈 방식으로 로드밸런싱이 되고있음을 알 수 있다.
+
+<br/>
 
 ### Spring Cloud Gateway 정리
 
